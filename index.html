@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teresa Su - Personal Website</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -12,245 +17,205 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
+            font-family: 'Sorts Mill Goudy', 'Noto Serif SC', serif;
+            background-color: #f8f8f8;
             color: #333;
-            background: #f8f9fa;
-            display: flex;
-            min-height: 100vh;
+            line-height: 1.5;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .sidebar {
-            width: 350px;
-            background: linear-gradient(135deg, #7c9eb2 0%, #6b8fa3 100%);
-            color: white;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            margin-bottom: 1.5rem;
-            overflow: hidden;
-            position: relative;
-        }
 
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
 
-        .sidebar h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .sidebar .subtitle {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-        .nav-links {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .nav-links li {
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            opacity: 0.9;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: auto;
-            margin-bottom: 1rem;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.5rem;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-links a:hover {
-            opacity: 1;
-        }
-
-        .copyright {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-
-        .content {
-            flex: 1;
-            padding: 3rem 4rem;
-            max-width: 800px;
-        }
-
-        .content h2 {
-            font-size: 2.5rem;
-            color: #7c9eb2;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-
-        .intro {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .intro strong {
-            color: #7c9eb2;
-        }
-
-        .intro a {
-            color: #7c9eb2;
-            text-decoration: none;
-        }
-
-        .intro a:hover {
-            text-decoration: underline;
-        }
-
-        .section {
-            margin-bottom: 3rem;
-        }
-
-        .section h3 {
-            font-size: 1.5rem;
-            color: #333;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .section p {
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-
-        .publications {
-            margin-top: 2rem;
-        }
-
-        .publications ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .publications li {
-            margin-bottom: 1rem;
-            padding-left: 1rem;
-            position: relative;
-        }
-
-        .publications li::before {
-            content: "•";
-            color: #7c9eb2;
+        .section-title {
+            font-size: 16px;
             font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .publications li strong {
-            color: #333;
-        }
-
-        .publications li em {
-            color: #666;
-            font-style: italic;
-        }
-
-        .publications a {
-            color: #7c9eb2;
-            text-decoration: none;
-        }
-
-        .publications a:hover {
-            text-decoration: underline;
+            margin-bottom: 20px;
+            margin-top: 60px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
 
         @media (max-width: 768px) {
             body {
-                flex-direction: column;
+                padding: 40px 20px;
             }
+        }
+        
+        a {
+            color: #333;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
 
-            .sidebar {
-                width: 100%;
-                padding: 1.5rem;
-            }
+        a:hover {
+            color: #666;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 40px;
+            letter-spacing: 0.02em;
+        }
 
-            .content {
-                padding: 2rem 1.5rem;
-            }
+        .chinese {
+            font-size: 16px;
+            color: #666;
+            margin-left: 8px;
+        }
 
-            .content h2 {
-                font-size: 2rem;
+        .page-number {
+            font-size: 14px;
+            color: #999;
+            float: right;
+            margin-left: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .work-link {
+            color: #333;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .work-link:hover {
+            color: #666;
+        }
+
+
+
+        .contact-item {
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-number {
+            font-size: 12px;
+            color: #999;
+            margin-right: 8px;
+            min-width: 16px;
+        }
+
+        .contact-link {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #666;
+        }
+
+        .arrow {
+            margin-left: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .teams-item {
+            margin-bottom: 6px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+
+
+
+        .team-name {
+            flex-grow: 1;
+        }
+
+        .team-year {
+            font-size: 12px;
+            color: #666;
+            margin-left: 12px;
+        }
+
+
+
+        @media (max-width: 768px) {
+            body {
+                padding: 40px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="profile-image">
-            <img src="profile.jpg" alt="Teresa Su">
-        </div>
-        <h1>Shichen Teresa Su 苏诗晨</h1>
-        <div class="subtitle">
-            Astrophsyics and Data Intensive Science PhD at UCL
-        </div>
+    <div class="container">
+        <h1>
+            Shichen Teresa Su <span class="chinese">[苏诗晨]</span>
+            <span class="page-number">[ 1 ]</span>
+        </h1>
+        
+        <p>Hi! I am Teresa, an incoming PhD student at UCL's <a href="https://www.ucl.ac.uk/data-intensive-science-industry">Centre for Data Intensive Science</a>. My research is about galactic archaeology, using data-intensive approaches to understand the evolution of the Milky Way.</p>
 
-        <div class="social-links">
-                        <a href="https://www.linkedin.com/in/teresa-su-physics/" title="LinkedIn">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="24" height="24" fill="currentColor">
-        <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
-    </svg>
-</a>
+        <div class="section-title">
+            Short CV
+            <span class="page-number">[ 2 ]</span>
         </div>
         
-        <div class="copyright">
-            © 2025. All rights reserved.
-        </div>
-    </div>
-
-    <div class="content">
-        <h2>About Me</h2>
+        <ul class="teams-list">
+            <li class="teams-item">
+                <span class="team-name">PhD in Astrophysics, UCL</span>
+                <span class="team-year">2025 → 2029</span>
+            </li>
+            <li class="teams-item">
+                <span class="team-name">MASt (Part III) Theoretical Physics, University of Cambridge</span>
+                <span class="team-year">2024 → 2025</span>
+            </li>
+            <li class="teams-item">
+                <span class="team-name">BSc Theoretical Physics, UCL</span>
+                <span class="team-year">2021 → 2024</span>
+            </li>
+        </ul>
         
-        <div class="intro">
-            <p>Hi! I am <strong>Teresa</strong>, an incoming PhD student at UCL’s <a href="https://www.ucl.ac.uk/data-intensive-science-industry">Centre for Data Intensive Science</a>. My research is about <strong>galactic archaeology</strong>, using data-intensive approaches to understand the evolution of the Milky Way.</p>
-
-            <br>
-            
-            <p>Before starting my PhD, I completed my BSc in Theoretical Physics at UCL and Part III (MAst in Theoretical Physics) at the University of Cambridge.</p>
-            
+        <div class="section-title">
+            Contact
+            <span class="page-number">[ 3 ]</span>
         </div>
-
+        
+        <ul class="contact-list">
+            <li class="contact-item">
+                <span class="contact-number">¹</span>
+                <a href="mailto:teresa.su.21@ucl.ac.uk" class="contact-link">Email</a>
+                <span class="arrow">↗</span>
+            </li>
+            <li class="contact-item">
+                <span class="contact-number">²</span>
+                <a href="https://www.linkedin.com/in/teresa-su-physics/" class="contact-link">LinkedIn</a>
+                <span class="arrow">↗</span>
+            </li>
+        </ul>
     </div>
+
+    <script>
+        // Add subtle hover animations without preventing default link behavior
+        document.querySelectorAll('.contact-link, .work-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(2px)';
+                this.style.transition = 'transform 0.2s ease';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+
+    </script>
 </body>
 </html>
