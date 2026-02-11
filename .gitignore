@@ -2,8 +2,6 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos
 
 ### macOS ###
-photo.png
-
 # General
 .DS_Store
 .AppleDouble
