@@ -10,6 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&family=Outfit:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     
     <style>
+        :root {
+            --bg: #f8f8f8;
+            --text: #333;
+            --text-secondary: #666;
+            --text-tertiary: #999;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1a1a;
+            --text: #e0e0e0;
+            --text-secondary: #aaa;
+            --text-tertiary: #666;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -18,13 +32,35 @@
 
         body {
             font-family: 'Rubik', 'Noto Sans SC', sans-serif;
-            background-color: #f8f8f8;
-            color: #333;
+            background-color: var(--bg);
+            color: var(--text);
             line-height: 1.5;
             padding: 60px 20px;
             max-width: 1200px;
             margin: 0 auto;
             font-weight: 300;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-secondary);
+            font-family: 'Rubik', sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            color: var(--text);
+            border-color: var(--text);
         }
 
         .container {
@@ -68,13 +104,13 @@
         }
         
         a {
-            color: #333;
+            color: var(--text);
             text-decoration: underline;
             transition: color 0.3s ease;
         }
 
         a:hover {
-            color: #666;
+            color: var(--text-secondary);
         }
         
         h1 {
@@ -87,13 +123,13 @@
         .chinese {
             font-size: 18px;
             font-weight: 300;
-            color: #666;
+            color: var(--text-secondary);
             margin-left: 8px;
         }
 
         .page-number {
             font-size: 14px;
-            color: #999;
+            color: var(--text-tertiary);
             float: right;
             margin-left: 20px;
         }
@@ -105,14 +141,14 @@
         }
 
         .work-link {
-            color: #333;
+            color: var(--text);
             text-decoration: underline;
             cursor: pointer;
             transition: color 0.3s ease;
         }
 
         .work-link:hover {
-            color: #666;
+            color: var(--text-secondary);
         }
 
 
@@ -126,25 +162,25 @@
 
         .contact-number {
             font-size: 12px;
-            color: #999;
+            color: var(--text-tertiary);
             margin-right: 8px;
             min-width: 16px;
         }
 
         .contact-link {
-            color: #333;
+            color: var(--text);
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .contact-link:hover {
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .arrow {
             margin-left: 8px;
             font-size: 12px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .cv-item {
@@ -162,7 +198,7 @@
 
         .cv-year {
             font-size: 12px;
-            color: #666;
+            color: var(--text-secondary);
             margin-left: 12px;
         }
 
@@ -176,6 +212,7 @@
     </style>
 </head>
 <body>
+    <button id="theme-toggle" aria-label="Toggle dark mode">dark</button>
     <div class="container">
         <h1>
             Shichen Teresa Su <span class="chinese">[苏诗晨]</span>
@@ -251,18 +288,39 @@
     </div>
 
     <script>
+        // Dark mode toggle
+        const toggle = document.getElementById('theme-toggle');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function setTheme(dark) {
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            toggle.textContent = dark ? 'light' : 'dark';
+            localStorage.setItem('theme', dark ? 'dark' : 'light');
+        }
+
+        // Init: respect saved preference, then system preference
+        const saved = localStorage.getItem('theme');
+        if (saved) {
+            setTheme(saved === 'dark');
+        } else {
+            setTheme(prefersDark.matches);
+        }
+
+        toggle.addEventListener('click', () => {
+            setTheme(document.documentElement.getAttribute('data-theme') !== 'dark');
+        });
+
         // Add subtle hover animations without preventing default link behavior
         document.querySelectorAll('.contact-link, .work-link').forEach(link => {
             link.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateX(2px)';
                 this.style.transition = 'transform 0.2s ease';
             });
-            
+
             link.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateX(0)';
             });
         });
-
     </script>
 </body>
 </html>
