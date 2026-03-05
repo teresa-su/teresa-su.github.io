@@ -303,7 +303,7 @@
         if (saved) {
             setTheme(saved === 'dark');
         } else {
-            setTheme(prefersDark.matches);
+            setTheme(true);
         }
 
         toggle.addEventListener('click', () => {
